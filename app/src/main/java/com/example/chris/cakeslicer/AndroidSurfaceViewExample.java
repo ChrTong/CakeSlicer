@@ -6,6 +6,7 @@ import java.io.IOException;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.hardware.Camera;
 import android.hardware.Camera.PictureCallback;
 import android.hardware.Camera.ShutterCallback;
@@ -16,6 +17,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
@@ -35,15 +37,15 @@ public class AndroidSurfaceViewExample extends Activity implements SurfaceHolder
 
     int image_width = 100;
     int image_height = 100;
-
     public int number_slices = 2;
 
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-
+        //requestWindowFeature(Window.FEATURE_NO_TITLE);
+        number_slices = Integer.parseInt(getIntent().getStringExtra("NUMSLICES"));
+        Log.d("NUMBERSSS", number_slices+"");
         setContentView(R.layout.activity_main);
 
         surfaceView = (SurfaceView) findViewById(R.id.surfaceView);
@@ -96,19 +98,14 @@ public class AndroidSurfaceViewExample extends Activity implements SurfaceHolder
                 img.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
                 RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(progress,progress);
 
-                image_height = 3*progress;
-                image_width = 3*progress;
+                image_height = 3*(500-progress);
+                image_width = 3*(500-progress);
                 img.getLayoutParams().height = image_height;
                 img.getLayoutParams().width = image_width;
                 img.requestLayout();
                 Log.d("Size = ", progress + "");
 
-                /*
-                img.setLayoutParams(params);
-
-                img.setMinimumWidth(progress);
-                img.setMinimumHeight(progress);
-                */
+                //Play sound effect
 
 
 
@@ -117,40 +114,76 @@ public class AndroidSurfaceViewExample extends Activity implements SurfaceHolder
             }
         });
 
-        final SeekBar number_slices_slider = (SeekBar) findViewById(R.id.slice_slider);
-        number_slices_slider.setMax(3); // Up to 9 slices
-        number_slices_slider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+//        final SeekBar number_slices_slider = (SeekBar) findViewById(R.id.slice_slider);
+//        number_slices_slider.setMax(3); // Up to 9 slices
+//        number_slices_slider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
-            public void onStopTrackingTouch(SeekBar seekBar) {
-                // TODO Auto-generated method stub
-            }
+//            public void onStopTrackingTouch(SeekBar seekBar) {
+//                // TODO Auto-generated method stub
+//            }
+//
+//            public void onStartTrackingTouch(SeekBar seekBar) {
+//                // TODO Auto-generated method stub
+//
+//            }
+//
+//            public void onProgressChanged(SeekBar seekBar, int progress,boolean fromUser) {
+//                // TODO Auto-generated method stub
+//                ImageView img = (ImageView) findViewById(R.id.guidelines);
+//                if (progress == 0){
+//                    img.setImageResource(R.drawable.guidelines_0);
+//                } else if (progress == 1){
+//                    img.setImageResource(R.drawable.guidelines_1);
+//
+//                } else if (progress == 2){
+//                    img.setImageResource(R.drawable.guidelines_2);
+//
+//                } else if (progress == 3){
+//                    img.setImageResource(R.drawable.guidelines_3);
+//
+//                }
+//
+//
+//                image_height = 3*progress;
+//                image_width = 3*progress;
+//                img.getLayoutParams().height = image_height;
+//                img.getLayoutParams().width = image_width;
+//
+//                img = (ImageView) findViewById(R.id.guidelines);
+//                img.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+//                RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(progress,progress);
+//
+//
+//                img.getLayoutParams().height = image_height;
+//                img.getLayoutParams().width = image_width;
+//                img.requestLayout();
+//                Log.d("Size = ", progress + "");
+//
+//
+//                img.requestLayout();
+//
+//                ImageView img2 = (ImageView) findViewById(R.id.num_slides_counter);
+//                if (progress == 0){
+//                    img2.setImageResource(R.drawable.guidelines_0);
+//                } else if (progress == 1){
+//                    img2.setImageResource(R.drawable.guidelines_1);
+//
+//                } else if (progress == 2){
+//                    img2.setImageResource(R.drawable.guidelines_2);
+//
+//                } else if (progress == 3){
+//                    img2.setImageResource(R.drawable.guidelines_3);
+//
+//                }
+//                img2.requestLayout();
+//                //img2.getLayoutParams().height = image_height;
+//                //img2.getLayoutParams().width = image_width;
+//
+//                //Play sound effect
+//            }
+//        });
 
-            public void onStartTrackingTouch(SeekBar seekBar) {
-                // TODO Auto-generated method stub
-
-            }
-
-            public void onProgressChanged(SeekBar seekBar, int progress,boolean fromUser) {
-                // TODO Auto-generated method stub
-                ImageView img = (ImageView) findViewById(R.id.guidelines);
-                img.setImageDrawing("guidelines_" + number_slices + ".png");
-
-                image_height = 3*progress;
-                image_width = 3*progress;
-                img.getLayoutParams().height = image_height;
-                img.getLayoutParams().width = image_width;
-
-
-                img.requestLayout();
-
-                ImageView img2 = (ImageView) findViewById(R.id.num_slides_counter);
-                img2.setImageDrawing("number_" + number_slices + ".png");
-                img2.requestLayout();
-                //img2.getLayoutParams().height = image_height;
-                //img2.getLayoutParams().width = image_width;
-            }
-        });
-    }
+   }
 
     public void captureImage(View v) throws IOException {
         //take the picture

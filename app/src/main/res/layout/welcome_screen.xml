@@ -1,0 +1,63 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fitsSystemWindows="true">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/cake_image"
+        android:paddingTop="30dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:weightSum="1">
+
+
+        <TextView
+            android:id="@+id/NumSlices"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:textStyle="italic|bold"
+            android:textSize="31dp"
+            android:textColorHint="@color/colorAccent"
+            android:textColor="@color/colorAccent"
+            android:backgroundTint="#00FFFFFF"
+            android:inputType="number"
+            android:text="Welcome to CakeSlice!" />
+        <TextView
+            android:id="@+id/infomsg"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:ems="18"
+            android:gravity="center"
+            android:textStyle="italic"
+            android:textSize="15dp"
+            android:textColor="@color/light_pink"
+            android:backgroundTint="#00FFFFFF"
+            android:text="The next few steps will guide you to cutting perfect and equal sized cake slices!
+Your guests will be happy!" />
+
+
+        <Button
+            android:id="@+id/next2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="#00FFFFFF"
+            android:textSize="18dp"
+            android:textColor="@color/white"
+            android:text="Next" />
+
+    </LinearLayout>
+</ScrollView>
+
+

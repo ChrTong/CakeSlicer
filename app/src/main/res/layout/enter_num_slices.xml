@@ -1,0 +1,52 @@
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fitsSystemWindows="true">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:background="@drawable/cake_image"
+        android:paddingTop="30dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:weightSum="1">
+
+
+
+
+        <EditText
+            android:id="@+id/NumSlices"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:hint="Enter the number of slices here"
+            android:textStyle="italic"
+            android:textSize="22dp"
+            android:textColorHint="@color/colorAccent"
+            android:textColor="@color/colorAccent"
+            android:backgroundTint="#00FFFFFF"
+            android:inputType="number"/>
+
+
+        <Button
+            android:id="@+id/next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="#00FFFFFF"
+            android:textSize="18dp"
+            android:textColor="@color/white"
+            android:text="Next" />
+
+    </LinearLayout>
+</ScrollView>
+
+

@@ -7,6 +7,10 @@ import java.io.IOException;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.drawable.BitmapDrawable;
 import android.hardware.Camera;
 import android.hardware.Camera.PictureCallback;
 import android.hardware.Camera.ShutterCallback;
@@ -58,6 +62,35 @@ public class AndroidSurfaceViewExample extends Activity implements SurfaceHolder
         // deprecated setting, but required on Android versions prior to 3.0
         surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
 
+        ImageView image = (ImageView) findViewById(R.id.cake);
+
+        int width = 1800;
+        Bitmap bitmap = Bitmap.createBitmap(width,width,Bitmap.Config.ARGB_8888);
+        Canvas c = new Canvas(bitmap);
+
+        //float radius = 60;
+        float radius = 508;
+
+        float slices = (float) number_slices;
+        float middle_screen_x = width/2;
+        float middle_screen_y = width/2;
+        Paint circleColor = new Paint();
+        circleColor.setStyle(Paint.Style.STROKE);
+        circleColor.setStrokeWidth(5);
+
+        Paint lineColor = new Paint();
+        lineColor.setStrokeWidth(5);
+
+        //c.drawCircle(middle_screen_x, middle_screen_y, radius, circleColor);
+
+        for(float i = 0; i < slices; i++){
+            float angle = (float)((i/slices)*2.0*Math.PI);
+            float x = middle_screen_x + (float)(radius*Math.cos(angle));
+            float y = middle_screen_y + (float)(radius*Math.sin(angle));
+
+            c.drawLine(middle_screen_x, middle_screen_y, x, y, lineColor);
+        }
+        image.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
         jpegCallback = new PictureCallback() {
             @SuppressLint("WrongConstant")
             public void onPictureTaken(byte[] data, Camera camera) {
@@ -103,6 +136,18 @@ public class AndroidSurfaceViewExample extends Activity implements SurfaceHolder
                 img.getLayoutParams().height = image_height;
                 img.getLayoutParams().width = image_width;
                 img.requestLayout();
+                Log.d("Size = ", progress + "");
+
+
+                ImageView imgcake = (ImageView) findViewById(R.id.cake);
+                imgcake.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+                //RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(progress,progress);
+
+                image_height = 3*(500-progress);
+                image_width = 3*(500-progress);
+                imgcake.getLayoutParams().height = image_height;
+                imgcake.getLayoutParams().width = image_width;
+                imgcake.requestLayout();
                 Log.d("Size = ", progress + "");
 
                 //Play sound effect

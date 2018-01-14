@@ -17,34 +17,27 @@
         android:weightSum="1">
 
 
-        <TextView
-            android:id="@+id/NumSlices"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"
-            android:ems="10"
-            android:textStyle="italic|bold"
-            android:textSize="31dp"
-            android:textColorHint="@color/colorAccent"
-            android:textColor="@color/colorAccent"
-            android:backgroundTint="#00FFFFFF"
-            android:inputType="number"
-            android:text="Welcome to CakeSlice!" />
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="360dp"
+            android:layout_height="121dp"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/cake_slice_title" />
+
         <TextView
             android:id="@+id/infomsg"
-            android:layout_width="wrap_content"
+            android:layout_width="301dp"
             android:layout_height="match_parent"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
-            android:ems="18"
-            android:gravity="center"
-            android:textStyle="italic"
-            android:textSize="15dp"
-            android:textColor="@color/light_pink"
             android:backgroundTint="#00FFFFFF"
+            android:ems="18"
+            android:layout_gravity="center"
             android:text="The next few steps will guide you to cutting perfect and equal sized cake slices!
-Your guests will be happy!" />
+Your guests will be happy!"
+            android:textColor="@color/light_pink"
+            android:textSize="15dp"
+            android:textStyle="italic" />
 
 
         <Button

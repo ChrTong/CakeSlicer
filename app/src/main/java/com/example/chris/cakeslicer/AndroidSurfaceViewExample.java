@@ -36,6 +36,8 @@ public class AndroidSurfaceViewExample extends Activity implements SurfaceHolder
     int image_width = 100;
     int image_height = 100;
 
+    public int number_slices = 2;
+
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -74,9 +76,9 @@ public class AndroidSurfaceViewExample extends Activity implements SurfaceHolder
             }
         };
 
-        final SeekBar sk1 = (SeekBar) findViewById(R.id.size_slider);
-        sk1.setMax(500);
-        sk1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        final SeekBar size_slider = (SeekBar) findViewById(R.id.size_slider);
+        size_slider.setMax(500);
+        size_slider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
             public void onStopTrackingTouch(SeekBar seekBar) {
                 // TODO Auto-generated method stub
@@ -94,8 +96,10 @@ public class AndroidSurfaceViewExample extends Activity implements SurfaceHolder
                 img.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
                 RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(progress,progress);
 
-                img.getLayoutParams().height = 3*progress;
-                img.getLayoutParams().width = 3*progress;
+                image_height = 3*progress;
+                image_width = 3*progress;
+                img.getLayoutParams().height = image_height;
+                img.getLayoutParams().width = image_width;
                 img.requestLayout();
                 Log.d("Size = ", progress + "");
 
@@ -110,6 +114,40 @@ public class AndroidSurfaceViewExample extends Activity implements SurfaceHolder
 
 
 
+            }
+        });
+
+        final SeekBar number_slices_slider = (SeekBar) findViewById(R.id.slice_slider);
+        number_slices_slider.setMax(3); // Up to 9 slices
+        number_slices_slider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                // TODO Auto-generated method stub
+            }
+
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                // TODO Auto-generated method stub
+
+            }
+
+            public void onProgressChanged(SeekBar seekBar, int progress,boolean fromUser) {
+                // TODO Auto-generated method stub
+                ImageView img = (ImageView) findViewById(R.id.guidelines);
+                img.setImageDrawing("guidelines_" + number_slices + ".png");
+
+                image_height = 3*progress;
+                image_width = 3*progress;
+                img.getLayoutParams().height = image_height;
+                img.getLayoutParams().width = image_width;
+
+
+                img.requestLayout();
+
+                ImageView img2 = (ImageView) findViewById(R.id.num_slides_counter);
+                img2.setImageDrawing("number_" + number_slices + ".png");
+                img2.requestLayout();
+                //img2.getLayoutParams().height = image_height;
+                //img2.getLayoutParams().width = image_width;
             }
         });
     }

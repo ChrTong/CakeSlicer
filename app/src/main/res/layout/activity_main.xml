@@ -14,18 +14,29 @@
         android:layout_height="match_parent"
         android:layout_weight="1" />
 
-
-    <SeekBar
-        android:id="@+id/size_slider"
-        android:layout_width="350dp"
-        android:layout_height="19dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="352dp"
+        android:layout_height="100dp"
+        android:src="@mipmap/pink"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.933" />
+        app:layout_constraintVertical_bias="1.0" />
+
+    <SeekBar
+        android:id="@+id/size_slider"
+        android:layout_width="272dp"
+        android:layout_height="23dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.142"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.943" />
 
     <ImageView
         android:id="@+id/guidelines"
@@ -34,9 +45,34 @@
         android:src="@mipmap/imported_circle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.362" />
+
+    <SeekBar
+        android:id="@+id/slice_slider"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="281dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginStart="16dp"
+        android:max="10"
+        android:progress="3"
+        app:layout_constraintBottom_toTopOf="@+id/size_slider"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/num_slides_counter"
+        android:layout_width="46dp"
+        android:layout_height="52dp"
+        android:src="@mipmap/number_0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.952"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.94" />
 
 
 </android.support.constraint.ConstraintLayout>
